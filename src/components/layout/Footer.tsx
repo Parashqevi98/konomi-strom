@@ -168,7 +168,7 @@ const Footer = () => {
       <div className="border-t border-white/5">
         <div className="mx-auto max-w-7xl px-8 md:px-16 py-5 flex flex-col items-center justify-between gap-4 sm:flex-row">
           <p className="font-sans text-xs text-[#EED7B7]/30">
-            © {new Date().getFullYear()} Konomi Strom. Të gjitha të drejtat e rezervuara. Made in Albania with ♥
+            © {new Date().getFullYear()} Konomi Strom. Të gjitha të drejtat e rezervuara.
           </p>
           <div className="flex items-center gap-6">
             <a href="/privacy" className="font-sans text-xs text-[#EED7B7]/30 transition-colors duration-200 hover:text-[#EED7B7]/60">

@@ -27,10 +27,10 @@ const FindMattressSection = () => {
     `${enterBase} ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`;
 
   const mattressTypes = [
-    { tag: "Foam", title: "Memory Foam", description: "Përshtatet me formën e trupit dhe redukton presionin në shtyllën kurrizore.", image: "/images/mattresses/memory-foam.png" },
-    { tag: "Spring", title: "Pocket Spring", description: "Susta individuale që eliminojnë transferimin e lëvizjes gjatë gjumit.", image: "/images/mattresses/pocket-spring.png" },
-    { tag: "Latex", title: "Natural Latex", description: "Material natyral, anti-bakterial dhe shumë i ajrosshëm.", image: "/images/mattresses/natural-latex.png" },
-    { tag: "Hybrid", title: "Hybrid Comfort", description: "Kombinon memory foam dhe sustat për rehati dhe mbështetje perfekte.", image: "/images/mattresses/hybrid-mattress.png" },
+  { tag: "Foam", title: "Memory Foam", description: "Përshtatet me trupin, ul presionin.", image: "/images/mattresses/memory-foam.png" },
+  { tag: "Spring", title: "Pocket Spring", description: "Susta individuale, pa transferim lëvizjeje.", image: "/images/mattresses/pocket-spring.png" },
+  { tag: "Latex", title: "Natural Latex", description: "Natyral, antibakterial, shumë i ajrosshëm.", image: "/images/mattresses/natural-latex.png" },
+  { tag: "Hybrid", title: "Hybrid Comfort", description: "Foam + susta për rehati dhe mbështetje.", image: "/images/mattresses/hybrid-mattress.png" },
   ];
 
   interface Answers { sleepPosition: string; firmness: string; sleepers: string; }
