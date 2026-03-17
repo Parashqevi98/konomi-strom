@@ -72,7 +72,7 @@ const Hero = ({ backgroundImageUrl = "/images/hero.png" }: HeroProps) => {
             className={`${enterBase} ${enterFrom} mt-26 md:mt-12 flex flex-col gap-4 sm:flex-row sm:items-center`}
             style={{ transitionDelay: "1000ms" }}
           >
-             <a
+           <a
   href="/products"
   className="
     group relative inline-flex items-center justify-center overflow-hidden 
@@ -81,8 +81,8 @@ const Hero = ({ backgroundImageUrl = "/images/hero.png" }: HeroProps) => {
     /* FIX kryesor */
     w-fit
     
-    /* MOBILE (compact) */
-    px-5 py-2.5 text-xs
+    /* MOBILE (compact + më poshtë) */
+    px-5 py-2.5 text-xs mt-8 md:mt-0
 
     /* DESKTOP */
     md:px-8 md:py-4 md:text-sm
