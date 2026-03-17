@@ -1,9 +1,14 @@
+"use client";
+
+import { useEffect, useState, use } from "react";
 import { supabase } from "@/lib/superbase";
 import { getProductImages, getProductVariants } from "@/lib/queries";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProductGallery from "@/components/ui/ProductGallery";
 import ProductVariantSelector from "@/components/ui/ProductVariantSelector";
+import QuantitySelector from "@/components/ui/QuantitySelector";
+
 
 type Product = {
   id: string;
@@ -52,20 +57,47 @@ const StarRating = ({ rating }: { rating: number }) => (
   </div>
 );
 
-export default async function ProductPage({
+export default function ProductPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
-  const product = await getProductBySlug(slug);
-  if (!product) notFound();
+  const { slug } = use(params);
+  const [product, setProduct] = useState<Product | null>(null);
+  const [related, setRelated] = useState<Product[]>([]);
+  const [images, setImages] = useState<any[]>([]);
+  const [variants, setVariants] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [quantity, setQuantity] = useState(1);
 
-  const [related, images, variants] = await Promise.all([
-    getRelatedProducts(product.categories?.slug, slug),
-    getProductImages(product.id),
-    getProductVariants(product.id),
-  ]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const prod = await getProductBySlug(slug);
+      if (!prod) {
+        notFound();
+        return;
+      }
+      setProduct(prod);
+      const [rel, imgs, vars] = await Promise.all([
+        getRelatedProducts(prod.categories?.slug, slug),
+        getProductImages(prod.id),
+        getProductVariants(prod.id),
+      ]);
+      setRelated(rel);
+      setImages(imgs);
+      setVariants(vars);
+      setLoading(false);
+    };
+    fetchData();
+  }, [slug]);
+
+  if (loading || !product) {
+    return (
+      <main className="min-h-screen bg-[#1A1917] flex items-center justify-center">
+        <div className="text-[#EED7B7]">Loading...</div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-[#1A1917]">
@@ -73,7 +105,7 @@ export default async function ProductPage({
       {/* Breadcrumb */}
       <div className="mx-auto max-w-6xl px-4 md:px-8 pt-24 pb-4">
         <div className="flex flex-wrap items-center gap-1.5 font-sans text-[10px] uppercase tracking-widest text-[#EED7B7]/40">
-          <Link href="/" className="hover:text-[#E8C168] transition-colors">Ballina</Link>
+          <Link href="/" className="hover:text-[#E8C168] transition-colors">Homepage</Link>
           <span>/</span>
           <Link href="/products" className="hover:text-[#E8C168] transition-colors">Produktet</Link>
           {product.categories && (

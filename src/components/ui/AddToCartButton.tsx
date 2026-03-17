@@ -12,14 +12,15 @@ type Props = {
     image_url: string;
     tag: string;
   };
+  quantity?: number;
 };
 
-export default function AddToCartButton({ product }: Props) {
+export default function AddToCartButton({ product, quantity = 1 }: Props) {
   const { addItem } = useCart();
   const [added, setAdded] = useState(false);
 
   const handleAdd = () => {
-    addItem(product);
+    addItem(product, quantity);
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   };

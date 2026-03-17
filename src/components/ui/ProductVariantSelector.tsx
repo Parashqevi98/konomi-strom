@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import AddToCartButton from "@/components/ui/AddToCartButton";
+import QuantitySelector from "@/components/ui/QuantitySelector";
 
 type Variant = {
   id: string;
@@ -31,6 +32,7 @@ export default function ProductVariantSelector({ product, variants }: Props) {
   const [selectedVariant, setSelectedVariant] = useState<Variant | null>(
     variants.length > 0 ? variants[0] : null
   );
+  const [quantity, setQuantity] = useState(1);
 
   const currentPrice = selectedVariant ? selectedVariant.price : product.price;
 
@@ -82,9 +84,19 @@ export default function ProductVariantSelector({ product, variants }: Props) {
         </div>
       )}
 
+      {/* Quantity selector */}
+      <div className="mb-6">
+        <p className="font-sans text-[10px] uppercase tracking-widest text-[#EED7B7]/40 mb-3">Sasia</p>
+        <QuantitySelector
+          value={quantity}
+          onChange={setQuantity}
+          min={1}
+        />
+      </div>
+
       {/* CTAs */}
       <div className="flex flex-col gap-3">
-        <AddToCartButton product={cartProduct} />
+        <AddToCartButton product={cartProduct} quantity={quantity} />
         <a
           href={`https://wa.me/355692040349?text=Përshëndetje! Jam i interesuar për produktin: ${product.name}${selectedVariant ? ` - Madhësia: ${selectedVariant.size}` : ""}`}
           target="_blank"
