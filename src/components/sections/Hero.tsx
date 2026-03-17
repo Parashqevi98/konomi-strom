@@ -69,46 +69,44 @@ const Hero = ({ backgroundImageUrl = "/images/hero.png" }: HeroProps) => {
 
           {/* CTAs */}
           <div
-            className={`${enterBase} ${enterFrom} mt-25 md:mt-12 flex flex-col gap-4 sm:flex-row sm:items-center`}
+            className={`${enterBase} ${enterFrom} mt-26 md:mt-12 flex flex-col gap-4 sm:flex-row sm:items-center`}
             style={{ transitionDelay: "1000ms" }}
           >
-                <a
-        href="#products"
-        className="
-          group relative inline-flex items-center justify-center overflow-hidden 
-          border border-[#E8C168]/60 
-          px-8 py-4 
-          font-sans text-sm font-bold uppercase tracking-[0.18em]
+             <a
+  href="/products"
+  className="
+    group relative inline-flex items-center justify-center overflow-hidden 
+    border border-[#E8C168]/60 
+    
+    /* FIX kryesor */
+    w-fit
+    
+    /* MOBILE (compact) */
+    px-5 py-2.5 text-xs
 
-          /* MOBILE (default) */
-          bg-[#E8C168] text-[#1A1917]
+    /* DESKTOP */
+    md:px-8 md:py-4 md:text-sm
 
-          /* DESKTOP */
-          md:bg-transparent md:text-[#E8C168]
+    font-sans font-bold uppercase tracking-[0.18em]
 
-          transition-all duration-300
-          active:scale-95
-        "
-      >
-        {/* Desktop hover fill */}
-        <span className="absolute inset-0 hidden translate-y-full bg-[#E8C168] transition-transform duration-500 ease-out md:block group-hover:translate-y-0" />
+    bg-[#E8C168] text-[#1A1917]
+    md:bg-transparent md:text-[#E8C168]
 
-        {/* Content */}
-        <span className="relative z-10 flex items-center gap-3 transition-colors duration-300 md:group-hover:text-[#1A1917]">
-          Zbulo Koleksionin
+    transition-all duration-300
+    active:scale-95
+  "
+>
+  {/* Desktop hover fill */}
+  <span className="absolute inset-0 hidden translate-y-full bg-[#E8C168] transition-transform duration-500 ease-out md:block group-hover:translate-y-0" />
 
-          <span className="transition-transform duration-300 group-hover:translate-x-1">
-            →
-          </span>
-        </span>
-      </a>
-                        <a
-              href="#about"
-              className="inline-flex items-center gap-2 font-sans text-sm text-[#EED7B7] transition-colors duration-200 hover:text-white"
-            >
-              
-              
-            </a>
+  {/* Content */}
+  <span className="relative z-10 flex items-center gap-2 transition-colors duration-300 md:group-hover:text-[#1A1917]">
+    Zbulo Koleksionin
+    <span className="transition-transform duration-300 group-hover:translate-x-1">
+      →
+    </span>
+  </span>
+</a>
           </div>
         </div>
       </div>
